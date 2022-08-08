@@ -10,13 +10,13 @@
 
 #! sbatch directives begin here ###############################
 #! Name of the job:
-#SBATCH -J denv_ageModel
+#SBATCH -denv_titer_by_age
 #! Which project should be charged:
 #SBATCH -A HSALJE-SL3-CPU
 #! Output filename: %A means slurm job ID
-#SBATCH --output=denv_ageModel_%A.log
+#SBATCH --output=titer_by_age_%A.log
 # Redirect error messages with: -e <file_name>
-#SBATCH --error=denv_ageModel_%A.err
+#SBATCH --error=titer_by_age_%A.err
 
 #SBATCH -p cclake-long
 #! How many whole nodes should be allocated?
@@ -35,7 +35,7 @@
 #SBATCH --mail-type=ALL
 #! Uncomment this to prevent the job from being requeued (e.g. if
 #! interrupted by node failure or system downtime):
-##SBATCH --no-requeue
+#SBATCH --no-requeue
 
 #! sbatch directives end here (put any additional directives above this line)
 
@@ -68,7 +68,7 @@ module load R/4.0.3
 module load gcc/9
 
 #! Full path to application executable: 
-application="srun Rscript a_main_qsnich_infer.R"
+application="srun Rscript HIs_over_life_submission.R"
 
 #! Run options for the application:
 options=""
